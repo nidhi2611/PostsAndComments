@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postandcomment
+  labels:
+    app: postandcomment
+    tier: backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: postandcomment
+  template:
+    metadata:
+      labels:
+        app: postandcomment
+    spec:
+      containers:
+        - name: postandcomment
+          image: nidhi2611/posts_and_comments:v1
+          ports:
+            - containerPort: 3000
